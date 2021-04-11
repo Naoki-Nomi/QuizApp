@@ -8,11 +8,17 @@
 import UIKit
 
 class QuizViewController: UIViewController {
+    
+    var selectLevel = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func btnAction(sender: UIButton){
+        print(sender.tag)
     }
     
 
