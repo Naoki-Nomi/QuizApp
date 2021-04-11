@@ -23,6 +23,7 @@ class QuizViewController: UIViewController {
     var eachArray = [String]()
     var selectLevel = 0
     var quizCount = 0
+    var score = 0
     
 
     override func viewDidLoad() {
@@ -44,7 +45,7 @@ class QuizViewController: UIViewController {
     @IBAction func btnAction(sender: UIButton){
         if sender.tag == Int(eachArray[1]) {
             JudgeImageView.image = UIImage(named: "correct")
-            
+            score += 1
         }
         else {
             JudgeImageView.image = UIImage(named: "incorrect")
@@ -104,6 +105,11 @@ class QuizViewController: UIViewController {
         } else {
             self.performSegue(withIdentifier: "MoveToScoreVC", sender: nil)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let scoreVC = segue.destination as! ScoreViewController
+        scoreVC.totalScore = score
     }
     
 
