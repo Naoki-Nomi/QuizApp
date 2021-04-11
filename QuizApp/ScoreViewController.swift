@@ -8,9 +8,17 @@
 import UIKit
 
 class ScoreViewController: UIViewController {
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    
+    var totalScore = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scoreLabel.text = "\(totalScore)問正解"
+        
+        
 
         // Do any additional setup after loading the view.
     }
