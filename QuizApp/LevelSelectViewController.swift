@@ -8,6 +8,8 @@
 import UIKit
 
 class LevelSelectViewController: UIViewController {
+    
+    var selectTag = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +17,16 @@ class LevelSelectViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let quizVC = segue.destination as! QuizViewController
+        quizVC.selectLevel = selectTag
+    }
+    
+    @IBAction func btnAction(sender: UIButton){
+        print(sender.tag)
+        selectTag = sender.tag
+        performSegue(withIdentifier: "MoveToQuizVC", sender: nil)
+    }
 
     /*
     // MARK: - Navigation
