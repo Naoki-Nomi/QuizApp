@@ -62,5 +62,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>CFBundleDisplayName</key>
+	<string>IT転職クイズ</string>
 </dict>
 </plist>
