@@ -18,18 +18,28 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var QuizExplanation: UITextView!
     @IBOutlet weak var MoveToNextQuiz: UIButton!
     
-    
     var csvArray = [String]()
     var eachArray = [String]()
     var selectLevel = 0
     var quizCount = 0
     var score = 0
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        quizAnswer1.layer.borderWidth = 2
+        quizAnswer1.layer.borderColor = UIColor.black.cgColor
+        quizAnswer2.layer.borderWidth = 2
+        quizAnswer2.layer.borderColor = UIColor.black.cgColor
+        quizAnswer3.layer.borderWidth = 2
+        quizAnswer3.layer.borderColor = UIColor.black.cgColor
+        quizAnswer4.layer.borderWidth = 2
+        quizAnswer4.layer.borderColor = UIColor.black.cgColor
+        MoveToNextQuiz.layer.borderWidth = 2
+        MoveToNextQuiz.layer.borderColor = UIColor.black.cgColor
+        
         csvArray = loadCSV(fileName: "quiz\(selectLevel)")
+        csvArray.shuffle()
         eachArray = csvArray[quizCount].components(separatedBy: ",")
         quizNumber.text = "第\(quizCount+1)問"
         quizContent.text = eachArray[0]
@@ -59,10 +69,10 @@ class QuizViewController: UIViewController {
         QuizExplanation.isHidden = false
         QuizExplanation.text = eachArray[6]
         MoveToNextQuiz.isHidden = false
-        quizAnswer1.isHidden = true
-        quizAnswer2.isHidden = true
-        quizAnswer3.isHidden = true
-        quizAnswer4.isHidden = true
+        quizAnswer1.isEnabled = false
+        quizAnswer2.isEnabled = false
+        quizAnswer3.isEnabled = false
+        quizAnswer4.isEnabled = false
     }
     
     @IBAction func NextQuiz(_ sender: Any) {
@@ -70,10 +80,10 @@ class QuizViewController: UIViewController {
         QuizExplanation.isHidden = true
         MoveToNextQuiz.isHidden = true
         JudgeImageView.isHidden = true
-        quizAnswer1.isHidden = false
-        quizAnswer2.isHidden = false
-        quizAnswer3.isHidden = false
-        quizAnswer4.isHidden = false
+        quizAnswer1.isEnabled = true
+        quizAnswer2.isEnabled = true
+        quizAnswer3.isEnabled = true
+        quizAnswer4.isEnabled = true
     }
     
     
@@ -94,7 +104,6 @@ class QuizViewController: UIViewController {
     func nextQuiz() {
         quizCount += 1
         if quizCount < csvArray.count {
-            csvArray = loadCSV(fileName: "quiz\(selectLevel)")
             eachArray = csvArray[quizCount].components(separatedBy: ",")
             quizNumber.text = "第\(quizCount+1)問"
             quizContent.text = eachArray[0]

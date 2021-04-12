@@ -8,11 +8,21 @@
 import UIKit
 
 class LevelSelectViewController: UIViewController {
+    @IBOutlet weak var easyButton: UIButton!
+    @IBOutlet weak var normalButton: UIButton!
+    @IBOutlet weak var hardButton: UIButton!
     
     var selectTag = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        easyButton.layer.borderWidth = 2
+        easyButton.layer.borderColor = UIColor.black.cgColor
+        normalButton.layer.borderWidth = 2
+        normalButton.layer.borderColor = UIColor.black.cgColor
+        hardButton.layer.borderWidth = 2
+        hardButton.layer.borderColor = UIColor.black.cgColor
 
         // Do any additional setup after loading the view.
     }
